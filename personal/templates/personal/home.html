@@ -5,8 +5,18 @@
     <div style="border: 2px solid black">
         <h1>This is the body</h1>
         <p>Here is where you put stuff that should eb in the body of your website</p>
+        <p>{{ some_string }}</p>
+        <p>{{ some_number }}</p>
 
-        {% include 'personal/snippets/body_snippets' %}
+        <h1>List of Values</h1>
+        <ul>
+            {% for list_item in list_of_values %}
+                {% include 'personal/snippets/body_snippets' with list_item=list_item %}
+            {% endfor %}
+        </ul>
+
+
+
     </div>
 
 {% endblock content %}
