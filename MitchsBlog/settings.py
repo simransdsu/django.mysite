@@ -39,7 +39,8 @@ INSTALLED_APPS = [
 
 
     # MY APPS
-    "personal"
+    "personal",
+    "account"
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'account.Account'
 
 WSGI_APPLICATION = 'MitchsBlog.wsgi.application'
 
