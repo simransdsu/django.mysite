@@ -39,7 +39,8 @@ INSTALLED_APPS = [
 
 
     # MY APPS
-    "personal"
+    "personal",
+    "account"
 ]
 
 MIDDLEWARE = [
