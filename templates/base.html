@@ -9,7 +9,13 @@
 </head>
 <body>
     <header>
-        <h1>This is the Header</h1>
+        {% if request.user.is_authenticated %}
+            <h1><a href="">Hello </a>, {{ request.user.username }}</h1>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <h1><a href="/">Hello</a></h1>
+            <a href="{% url 'register' %}">Register</a> | <a href="#">Login</a>
+        {% endif %}
     </header>
 
     {% block content %}
@@ -19,7 +25,8 @@
     {% endblock content%}
 
     <footer>
-        <h3>This is the footer</h3>
+        <hr>
+        <p>CodingWithMitch Blog Course &copy; 2020</p>
     </footer>
 </body>
 </html>
