@@ -5,29 +5,19 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
     <title>My Site</title>
 </head>
 <body>
-    <header>
-        {% if request.user.is_authenticated %}
-            <h1><a href="{% url 'home' %}">Hello </a>, {{ request.user.username }}</h1>
-            <a href="{% url 'logout' %}">Logout</a> |
-            <a href="{% url 'account' %}">Account</a>
-        {% else %}
-            <h1><a href="{% url 'home' %}">Hello</a></h1>
-            <a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a>
-        {% endif %}
-    </header>
+
+    {% include 'snippets/header.html' %}
 
     {% block content %}
-
     {#    MAIN CONTENT GOES HERE   #}
-
     {% endblock content%}
 
-    <footer>
-        <hr>
-        <p>CodingWithMitch Blog Course &copy; 2020</p>
-    </footer>
+    {% include 'snippets/footer.html' %}
 </body>
 </html>
