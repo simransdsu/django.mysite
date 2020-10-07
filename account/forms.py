@@ -28,3 +28,30 @@ class AccountAuthenticationForm(forms.ModelForm):
 
             if not authenticate(email=email, password=password):
                 raise forms.ValidationError("Invalid login")
+
+# Account Update Form
+class AccountUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Account
+        fields = ("email", "username")
+
+    def clean_email(self):
+        if self.is_valid():
+            email = self.cleaned_data["email"]
+            try:
+                account = Account.object.exclude(pk=self.instance.pk).get(email=email)
+            except Account.DoesNotExist:
+                return email
+            print("Error email")
+            raise forms.ValidationError("Email '%s' is already in use" % email)
+
+    def clean_username(self):
+        if self.is_valid():
+            username = self.cleaned_data["username"]
+            try:
+                account = Account.object.exclude(pk=self.instance.pk).get(username=username)
+            except Account.DoesNotExist:
+                return username
+            print("Error username")
+            raise forms.ValidationError("Username '%s' is already in use" % username)
