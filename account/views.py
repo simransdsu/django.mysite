@@ -19,7 +19,7 @@ def registration_view(request):
         print("DEBUG:  registration_view:GET")
         form = RegistrationForm()
         context = __show_registration_form(form)
-        return render(request, "account/register.html", context)
+    return render(request, "account/register.html", context)
 
 
 def logout_view(request):

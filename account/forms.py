@@ -29,9 +29,9 @@ class AccountAuthenticationForm(forms.ModelForm):
             if not authenticate(email=email, password=password):
                 raise forms.ValidationError("Invalid login")
 
+
 # Account Update Form
 class AccountUpdateForm(forms.ModelForm):
-
     class Meta:
         model = Account
         fields = ("email", "username")
